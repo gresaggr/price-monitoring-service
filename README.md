@@ -40,3 +40,9 @@ alembic upgrade head
 ```bash
 docker-compose up --build
 ```
+
+Запуск тестов
+```bash
+docker exec -it price-monitoring-service-db-1 psql -U user -d pricemonitor -c "CREATE DATABASE pricemonitor_test OWNER \"user\";"
+docker-compose up --build test
+```

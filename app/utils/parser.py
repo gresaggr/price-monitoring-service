@@ -41,3 +41,9 @@ async def get_price_from_url(url: str) -> Optional[float]:
     if not html:
         return None
     return await extract_price(html)
+
+
+# для тестов
+def sync_extract_price(html: str) -> Optional[float]:
+    import asyncio
+    return asyncio.run(extract_price(html))

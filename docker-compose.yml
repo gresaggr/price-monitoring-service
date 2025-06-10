@@ -60,6 +60,21 @@ services:
     volumes:
       - redis_data:/data
 
+  test:
+    build: .
+    command: pytest -v --capture=no --log-cli-level=INFO
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://user:password@db:5432/pricemonitor_test
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - TEST=True
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - .:/app
+    env_file:
+      - .env
+
 volumes:
   postgres_data:
   redis_data:
