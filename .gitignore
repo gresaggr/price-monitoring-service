@@ -1,8 +1,12 @@
 # Byte-compiled / optimized / DLL files
+test_config.py
 .idea
 __pycache__/
 *.py[cod]
 *$py.class
+
+.venv
+.venv/
 
 # C extensions
 *.so
